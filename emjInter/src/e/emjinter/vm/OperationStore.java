@@ -30,6 +30,7 @@ public class OperationStore extends AbstractKVPStore<Integer, ICommand> {
   private void addCommands(AbstractKVPStore<Integer, Integer> refRegisters, AbstractKVPStore<Integer, Integer> refVariables)
   {
     data.put(Grammar.CMD_ADD, new AddCommand(refRegisters, refVariables));
+    data.put(Grammar.CMD_SUB, new SubCommand(refRegisters, refVariables));
   }
 
   
