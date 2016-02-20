@@ -18,9 +18,21 @@ public class Program {
       System.exit(-1);
     }
     
-    PrintStream out = new PrintStream(System.out, true, "UTF-8");
-    out.print(source.next());
-    out.print(source.next());
+    System.out.println(source.getLength());
+    System.out.println(source.getPosition());
+    
+    while(source.getPosition() < source.getLength())
+    {
+      switch(source.next())
+      {
+        case Grammar.HAPPY_FACE: { System.out.println(":)"); break; }
+        case Grammar.SHOCKED_FACE: { System.out.println(":o"); break; }
+        default:
+        {
+          System.out.println("FEK");
+        }
+      }
+    }
   }
 
 }
