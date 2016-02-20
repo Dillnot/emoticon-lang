@@ -19,7 +19,7 @@ public class emjVM {
     this.source = source;
     registers = new RegisterStore();
     variables = new VariableStore();
-    operations = new OperationStore();
+    operations = new OperationStore(registers, variables);
   }
   
   public void run()
@@ -31,7 +31,7 @@ public class emjVM {
         int cmdVal = source.next();
         ICommand cmd = operations.getValue(cmdVal);
         if(cmd == null) { throw new InvalidOperationException(cmdVal); }
-        operations.getValue(source.next()).execute();
+        operations.getValue(source.next()).execute(source);
       }
       catch (EmjInterExceptionBase e) 
       { 
@@ -41,6 +41,12 @@ public class emjVM {
     }
   }
   
+  
+  public void debugShutdown()
+  {
+    System.out.println("Printing Reg Values");
+    registers.print();
+  }
 
   
 }

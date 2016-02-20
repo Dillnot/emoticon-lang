@@ -13,15 +13,27 @@ public abstract class AbstractKVPStore<TKey, TVal> {
   }
   
   
-  protected boolean containsKey(TKey key)
+  public boolean containsKey(TKey key)
   {
     return data.containsKey(key);
   }
   
-  protected TVal getValue(TKey key)
+  public TVal getValue(TKey key)
   {
     return data.get(key);
   }
   
-  protected abstract void addValue(TKey key, TVal value) throws RuntimeException;
+  public abstract void addValue(TKey key, TVal value) throws RuntimeException;
+  
+  public abstract void updateValue(TKey key, TVal newValue);
+  
+  public String print()
+  {
+    StringBuilder sb = new StringBuilder();
+    for(TKey key : data.keySet())
+    {
+      sb.append(String.format("Key: %s | Val: %s\n",key, data.get(key)));
+    } 
+    return sb.toString();
+  }
 }
