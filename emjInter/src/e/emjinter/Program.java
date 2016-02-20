@@ -23,15 +23,7 @@ public class Program {
     
     while(source.getPosition() < source.getLength())
     {
-      switch(source.next())
-      {
-        case Grammar.HAPPY_FACE: { System.out.println(":)"); break; }
-        case Grammar.SHOCKED_FACE: { System.out.println(":o"); break; }
-        default:
-        {
-          System.out.println("FEK");
-        }
-      }
+      System.out.println(source.next());
     }
   }
 
