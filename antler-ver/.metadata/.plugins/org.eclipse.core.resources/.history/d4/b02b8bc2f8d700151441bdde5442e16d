@@ -1,0 +1,18 @@
+
+public class emlgrun {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		InputStream source = new 
+		        FileInputStream(args[0]); 
+		     CalcLexer lexer = new CalcLexer( 
+		        new ANTLRInputStream(source)); 
+		     CommonTokenStream tokens =  
+		        new CommonTokenStream(lexer); 
+		     CalcParser parser = new 
+		                          CalcParser(tokens); 
+		     ParseTree tree = parser.prog();
+		} 
+	}
+
+}

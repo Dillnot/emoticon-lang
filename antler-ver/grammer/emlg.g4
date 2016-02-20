@@ -1,5 +1,5 @@
 //the gramer of the emoticon lang
-grammar emoticon-lang;
+grammar emlg;
 
 program
         : var_decl* seq_com EOF # prog
@@ -18,13 +18,14 @@ type
 
 //comands
 com
-        :	ID ASSN expr              # assn
+        :	ID ASSN expr EOE              # assn
     	|	IF expr LPAR c1=seq_com
             ( RPAR
                 | ELSE LPAR c2=seq_com RPAR
-        	)                       # if
+        	)                                  # if
         |	WHILE expr LPAR
-		      seq_com RPAR             # while
+		      seq_com RPAR                    # while
+        | PRINT ID EOE                          #print
         ;
 
 seq_com
@@ -35,12 +36,12 @@ seq_com
 
 expr
         : e1=sec_expr
-            ( op=(EQ | LT | GT) e2=sec_expr )* EOE
+            ( op=(EQ | LT | GT) e2=sec_expr )*
         ;
 
 sec_expr
         :	e1=prim_expr
-            ( op=(PLUS | MINUS | TIMES | DIV) e2=sec_expr )? EOE
+            ( op=(PLUS | MINUS | TIMES | DIV) e2=sec_expr )?
         ;
 
 prim_expr
@@ -56,8 +57,7 @@ prim_expr
 
 
 //lexicon
-
-EOF     : '><>';
+PRINT   : ':O';
 ASSN    : 'XD';
 BOOL    : ':P';
 INT     : ':|';
@@ -65,19 +65,24 @@ LPAR    : '<3';
 RPAR    : '</3';
 IF      : 'O_o';
 ELSE    : 'o_O';
-WHILE   : ':)';
-EOE     : 'o/\o';
-EQ      : ':@'
+WHILE   : '><>';
+EOE     : ':$';
+EQ      : ':@';
 LT      : ':<';
 GT      : ':>';
-PLUS    : ':3'
+PLUS    : ':3';
 MINUS   : '<:|';
-TIMES   : ':D'
-DIV     : 'D:'
-FLASE   : '}:)';
+TIMES   : ':D';
+DIV     : 'D:';
+FALSE   : '}:)';
 TRUE    : 'O:)';
 NOT     : ':&';
 NUM	:	DIGIT+ ;
 fragment DIGIT  : '0'..'9' ;
-ID	:	LETTER (LETTER | DIGIT)* ;
-fragment LETTER : 'a'..'z' | 'A'..'Z' ;
+ID	:	':' PARTOFID+ ;
+fragment PARTOFID : ')' ;
+
+//ignore
+
+SPACE	:	(' ' | '\t')+   -> skip ;
+EOL	:	'\r'? '\n'          -> skip ;
