@@ -62,6 +62,9 @@ public class Grammar
   public static final int CMD_PRNT_START = Emoji.HEAD_SPEAK;
   public static final int CMD_PRNT_END   = Emoji.FINGER_OK;
   
+  public static final int CMD_DUMP_START = Emoji.TOILET;
+  public static final int CMD_DUMP_END   = Emoji.JOBBY;
+  
   
   @SuppressWarnings("serial")
   public static final Set<Integer> REG_SET = new HashSet<Integer>()
