@@ -23,6 +23,11 @@ public class Program {
       System.exit(-1);
     }
     
+    //while(source.getPosition() < source.getLength())
+    //{
+    //  System.out.println(source.next());
+    //}
+    
     System.out.println("Setting up VM...");
     vm = new emjVM(source);
     

@@ -17,6 +17,8 @@ public class CodeToStringConverter {
       case Grammar.REG_7: { return "Register: 8"; }
       case Grammar.REG_8: { return "Register: 9"; }
      
+      //Print
+      case Grammar.CMD_PRNT_START: { return "Print: Start"; }
     }
     
     return "Unknown";
