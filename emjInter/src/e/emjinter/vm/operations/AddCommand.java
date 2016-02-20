@@ -19,7 +19,7 @@ public class AddCommand extends AbstractCommand {
   public void checkSyntax(SourceStream source) throws EmjInterExceptionBase {
     if(!registers.containsKey(source.checkNext()))
     {
-      throw new InvalidParamException(String.format("The register value referenced at %d is invalid", source.getPosition() + 1));
+      throw new InvalidParamException(String.format("Unexpected token at pos %s. Not a valid register value.", source.getPosition() + 1));
     }
   }
 
@@ -29,7 +29,7 @@ public class AddCommand extends AbstractCommand {
     
     int reg = source.next();
     int val = registers.getValue(reg);
-    registers.updateValue(reg, val++);
+    registers.updateValue(reg, ++val);
   }
 
 
