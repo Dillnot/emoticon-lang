@@ -1,6 +1,7 @@
 package e.emjinter.vm.operations;
 
 import e.emjinter.vm.*;
+import e.emjinter.CodeToEmojiConverter;
 import e.emjinter.Grammar;
 import e.emjinter.source.*;
 import e.emjinter.exception.*;
@@ -19,7 +20,8 @@ public class AddCommand extends AbstractCommand {
   public void checkSyntax(SourceStream source) throws EmjInterExceptionBase {
     if(!registers.containsKey(source.checkNext()))
     {
-      throw new InvalidParamException(String.format("Unexpected token at pos %s. Not a valid register value.", source.getPosition() + 1));
+      throw new InvalidParamException(String.format("Unexpected token at pos %s. Not a valid register value.",
+          CodeToEmojiConverter.convert(source.getPosition() + 1)));
     }
   }
 
