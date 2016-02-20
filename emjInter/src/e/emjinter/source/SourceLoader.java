@@ -8,24 +8,26 @@ public class SourceLoader {
   
   public static String Load(String filename) throws EmjInterExceptionBase
   {
-    File source = new File(filename);
-    FileReader fr = null;
+    InputStream frs = null;
+    Reader fr = null;
     BufferedReader br = null;
     String sourceCode = "";
     String line = "";
     
     try
     {
-      fr = new FileReader(source);
+      frs = new FileInputStream(filename);
+      fr = new InputStreamReader(frs, "UTF-8");
       br = new BufferedReader(fr);
     }
     catch (FileNotFoundException e) { throw new SourceNotFoundException(filename); }
+    catch (UnsupportedEncodingException e) { throw new SourceNotReadException(filename); }
     
     try
     {
       while((line = br.readLine()) != null)
       {
-        sourceCode += line.replaceAll("\n","");
+        if(line != "\n") { sourceCode += line; }
       }
       
       br.close();
