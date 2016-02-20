@@ -3,13 +3,18 @@ package e.emjinter;
 import java.io.*;
 
 import e.emjinter.source.*;
+import e.emjinter.vm.*;
 
 public class Program {
 
   public static void main(String[] args) throws UnsupportedEncodingException {
-    SourceStream source = null;
     
-    if(args.length != 1) { System.out.println("Usage: prog /path/to/source"); System.exit(-1); }
+    SourceStream source = null;
+    emjVM vm = null;
+    
+    if(args.length < 1) { System.out.println("Usage: prog /path/to/source"); System.exit(-1); }
+    
+    System.out.println("Loading program source...");
     
     try { source = SourceStream.FromFile(args[0]); }
     catch (Exception e) 
@@ -18,12 +23,25 @@ public class Program {
       System.exit(-1);
     }
     
-    System.out.println(source.getLength());
-    System.out.println(source.getPosition());
-    
-    while(source.getPosition() < source.getLength())
+    if(args.length == 2)
+    { 
+      //Get processed values for code
+      if (args[1].compareTo("-s") == 0)
+      {
+        while(source.getPosition() < source.getLength())
+        {
+          System.out.println(source.next());
+        }
+      }
+    }
+    else
     {
-      System.out.println(source.next());
+      //Actually run the code
+      System.out.println("Setting up VM...");
+      vm = new emjVM(source);
+      
+      vm.run();
+      vm.debugShutdown();
     }
   }
 

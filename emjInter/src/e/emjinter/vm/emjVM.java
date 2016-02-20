@@ -1,7 +1,5 @@
 package e.emjinter.vm;
 
-import java.util.*;
-
 import e.emjinter.source.*;
 import e.emjinter.exception.*;
 import e.emjinter.vm.operations.*;
@@ -10,17 +8,16 @@ public class emjVM {
 
   private SourceStream source; 
   
-  private Map<Integer, Integer> registers;
-  private Map<Integer, Integer> variables;
-  private Map<Integer, ICommand> operations;
+  private AbstractKVPStore<Integer, Integer> registers;
+  private AbstractKVPStore<Integer, Integer> variables;
+  private AbstractKVPStore<Integer, ICommand> operations;
   
   public emjVM(SourceStream source)
   {
     this.source = source;
-    
-    registers = new HashMap<Integer, Integer>();
-    variables = new HashMap<Integer, Integer>();
-    operations = new HashMap<Integer, ICommand>();
+    registers = new RegisterStore();
+    variables = new VariableStore();
+    operations = new OperationStore(registers, variables);
   }
   
   public void run()
@@ -30,9 +27,9 @@ public class emjVM {
       try 
       { 
         int cmdVal = source.next();
-        ICommand cmd = operations.get(cmdVal);
-        if(cmd == null) { throw new InvalidOperationException(cmdVal); }
-        operations.get(source.next()).execute();
+        ICommand cmd = operations.getValue(cmdVal);
+        if(cmd == null) { throw new InvalidOperationException(cmdVal, source.getPosition()); }
+        operations.getValue(cmdVal).execute(source);
       }
       catch (EmjInterExceptionBase e) 
       { 
@@ -42,6 +39,12 @@ public class emjVM {
     }
   }
   
+  
+  public void debugShutdown()
+  {
+    System.out.println("Printing Reg Values");
+    System.out.println(registers.print());
+  }
 
   
 }

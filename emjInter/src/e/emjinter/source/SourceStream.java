@@ -43,6 +43,16 @@ public class SourceStream {
     return source[pos++];
   }
   
+  public int checkNext()
+  {
+    return source[pos];
+  }
+  
+  public int checkNext(int offset)
+  {
+    return source[pos + offset];
+  }
+  
   public static SourceStream FromFile(String filename) throws EmjInterExceptionBase
   {
     String contents = SourceLoader.Load(filename);
