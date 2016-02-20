@@ -12,7 +12,7 @@ public class Program {
     SourceStream source = null;
     emjVM vm = null;
     
-    if(args.length != 1) { System.out.println("Usage: prog /path/to/source"); System.exit(-1); }
+    if(args.length < 1) { System.out.println("Usage: prog /path/to/source"); System.exit(-1); }
     
     System.out.println("Loading program source...");
     
@@ -23,16 +23,26 @@ public class Program {
       System.exit(-1);
     }
     
-    //while(source.getPosition() < source.getLength())
-    //{
-    //  System.out.println(source.next());
-    //}
-    
-    System.out.println("Setting up VM...");
-    vm = new emjVM(source);
-    
-    vm.run();
-    vm.debugShutdown();
+    if(args.length == 2)
+    { 
+      //Get processed values for code
+      if (args[1].compareTo("-s") == 0)
+      {
+        while(source.getPosition() < source.getLength())
+        {
+          System.out.println(source.next());
+        }
+      }
+    }
+    else
+    {
+      //Actually run the code
+      System.out.println("Setting up VM...");
+      vm = new emjVM(source);
+      
+      vm.run();
+      vm.debugShutdown();
+    }
   }
 
 }
