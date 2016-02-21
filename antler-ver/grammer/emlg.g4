@@ -88,3 +88,4 @@ fragment PARTOFID : ')' ;
 
 SPACE	:	(' ' | '\t')+   -> skip ;
 EOL	:	'\r'? '\n'          -> skip ;
+COMMENT : ('a'..'z' | 'A'..'Z') -> skip; 

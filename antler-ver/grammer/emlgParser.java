@@ -18,7 +18,7 @@ public class emlgParser extends Parser {
 	public static final int
 		PRINT=1, READ=2, ASSN=3, LPAR=4, RPAR=5, IF=6, ELSE=7, WHILE=8, EOE=9, 
 		EQ=10, LT=11, GT=12, PLUS=13, MINUS=14, TIMES=15, DIV=16, FALSE=17, TRUE=18, 
-		NOT=19, NUM=20, ID=21, SPACE=22, EOL=23;
+		NOT=19, NUM=20, ID=21, SPACE=22, EOL=23, COMMENT=24;
 	public static final int
 		RULE_program = 0, RULE_com = 1, RULE_seq_com = 2, RULE_expr = 3, RULE_sec_expr = 4, 
 		RULE_prim_expr = 5;
@@ -34,7 +34,7 @@ public class emlgParser extends Parser {
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, "PRINT", "READ", "ASSN", "LPAR", "RPAR", "IF", "ELSE", "WHILE", 
 		"EOE", "EQ", "LT", "GT", "PLUS", "MINUS", "TIMES", "DIV", "FALSE", "TRUE", 
-		"NOT", "NUM", "ID", "SPACE", "EOL"
+		"NOT", "NUM", "ID", "SPACE", "EOL", "COMMENT"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -687,7 +687,7 @@ public class emlgParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\31P\4\2\t\2\4\3\t"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\32P\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\3\2\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3\3"+
 		"\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\5\3!\n\3\3\3\3\3\3\3\3\3\3\3\3\3"+
 		"\3\3\3\3\3\3\3\3\3\3\3\3\5\3/\n\3\3\4\7\4\62\n\4\f\4\16\4\65\13\4\3\5"+

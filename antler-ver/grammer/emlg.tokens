@@ -21,6 +21,7 @@ NUM=20
 ID=21
 SPACE=22
 EOL=23
+COMMENT=24
 ':O'=1
 '|‑O'=2
 'XD'=3
