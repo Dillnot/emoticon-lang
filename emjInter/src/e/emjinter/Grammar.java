@@ -4,9 +4,9 @@ import java.util.*;
 
 class Emoji {
   
-  public static final int FACE_SMILE = -30208;
-  public static final int FACE_SAD = -32512;
-  public static final int FACE_CONFUSED = -27392;
+  public static final int FACE_SMILE = 128522;
+  public static final int FACE_SAD = 128577;
+  public static final int FACE_CONFUSED = 128533;
   public static final int FACE_LAUGHING = -32256;
   public static final int FACE_HAPPY =    -26624;
   public static final int FACE_FAIL =     -23808;
@@ -14,30 +14,40 @@ class Emoji {
   public static final int FACE_SHOCK = -20992;
   public static final int FACE_GASP =  -20224;
   
-  public static final int HEAD_SPEAK = -23808;
+  public static final int HEAD_SPEAK = 128483;
   
   public static final int FINGER_LEFT = -30720;
   public static final int FINGER_RIGHT = -28416;
   public static final int FINGER_MIDDLE = -24832;
-  public static final int FINGER_OK = -29696;
+  public static final int FINGER_OK = 128076;
   public static final int FINGER_THUMBS = -29440;
   
   //Register Values
-  public static final int CAT_A = -17920;
-  public static final int CAT_B =-18432;
-  public static final int CAT_C =-18176;
-  public static final int CAT_D =-17664;
-  public static final int CAT_E =-17408;
-  public static final int CAT_F =-17152;
-  public static final int CAT_G =-32768;
-  public static final int CAT_H =-16640;
-  public static final int CAT_I =-16896;
+  public static final int CAT_A = 128570;
+  public static final int CAT_B = 128568;
+  public static final int CAT_C = 128569;
+  public static final int CAT_D = 128571;
+  public static final int CAT_E = 128572;
+  public static final int CAT_F = 128573;
+  public static final int CAT_G = 128576;
+  public static final int CAT_H = 128575;
+  public static final int CAT_I = 128574;
   
+  
+  public static final int ARROW_LEFT = 11013;
+  public static final int ARROW_UP = 11014;
+  public static final int ARROW_DOWN = 11015;
+  public static final int ARROW_UP_LEFT = 8599;
+  public static final int ARROW_DOWN_LEFT  = 8600;
+  public static final int ARROW_DOWN_RIGHT = 8601;
+  public static final int ARROW_UP_RIGHT =  8598;
   // ???
-  public static final int JOBBY = -22272;
+  public static final int JOBBY = 128169;
   public static final int SHEEP = -28416;
   public static final int TORTISE = -24064;
-  public static final int TOILET =  -17152; 
+  public static final int TOILET =  128701; 
+  public static final int LIGHTBLUB = 128161;
+  
   public static final int HEART = -4252;
   public static final int HEART_BROKEN = -24832;
 }

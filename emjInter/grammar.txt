@@ -16,14 +16,21 @@ PRINT A VAR/REGISTER
 PRINT A VAR/REGISTER to "FILE"
 🚽 (VAR) 💩 "FILE-VAL"
 
+IF
+😕 (VAR) |COMP| {THEN}
+💡  { ELSE}
+💡
+
 
 👍
 
 ????
 👈 👉 🖕
 😇
-😕
+😕💡
 😂 😃
 😣😧 😮 😱
 🐑🐢 ❤️💔
+
+➡️⬅️⬆️⬇️↗️↘️↙️↖️
 

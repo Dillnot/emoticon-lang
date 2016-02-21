@@ -1,6 +1,5 @@
 package e.emjinter.vm.operations;
 
-import e.emjinter.CodeToEmojiConverter;
 import e.emjinter.Grammar;
 import e.emjinter.exception.EmjInterExceptionBase;
 import e.emjinter.exception.InvalidParamException;
