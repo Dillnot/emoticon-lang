@@ -38,7 +38,7 @@ public class emjVM implements IVM {
   { 
     //Stack frames :3
     stack.push(registers);
-    registers = new RegisterStore();
+    //registers = new RegisterStore();
     
     doRun(subStream);
     
@@ -54,7 +54,7 @@ public class emjVM implements IVM {
         int cmdVal = source.next();
         ICommand cmd = operations.getValue(cmdVal);
         if(cmd == null) { throw new InvalidOperationException(cmdVal, source.getPosition()); }
-        operations.getValue(cmdVal).execute(source);
+        cmd.execute(source);
       }
       catch (EmjInterExceptionBase e) 
       { 

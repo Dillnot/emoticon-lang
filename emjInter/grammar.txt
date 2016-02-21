@@ -17,7 +17,7 @@ PRINT A VAR/REGISTER to "FILE"
 🚽 (VAR) 💩 "FILE-VAL"
 
 IF
-😕 (VAR) |COMP| {THEN}
+😕 (VAR) |COMP| (VAR) {THEN}
 💡  { ELSE}
 💡
 
