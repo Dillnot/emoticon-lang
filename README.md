@@ -16,7 +16,7 @@ the full Syntax is found in _antler-ve/grammer/emlg.g4_
 
 ##emjInter Version
 Similar take on the "altr-ver" but instead uses the Unicode images as commands:
-```👉😱😽```
+`👉😱😽`
 
 compile using: `javac *.java`
 
