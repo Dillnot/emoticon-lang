@@ -40,8 +40,18 @@ public class Program {
       System.out.println("Setting up VM...");
       vm = new emjVM(source);
       
+      if(args.length == 3)
+      {
+        if(args[2].endsWith(".in"))
+        {
+          InitFileLoader ifl = new InitFileLoader(vm, args[2]);
+          ifl.Load();
+        }
+      }
+
+      
       vm.run();
-      vm.debugShutdown();
+      //vm.debugShutdown();
     }
   }
 

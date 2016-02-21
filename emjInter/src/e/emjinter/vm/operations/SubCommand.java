@@ -18,7 +18,7 @@ public class SubCommand extends AbstractCommand {
   
   @Override
   public void checkSyntax(IStream source) throws EmjInterExceptionBase {
-    if(!registers.containsKey(source.checkNext()))
+    if(!registers.containsKey(source.checkNext(0)))
     {
       throw new InvalidParamException(String.format("Unexpected token at pos %s. Not a valid register value.",
           CodeToEmojiConverter.convert(source.getPosition() + 1)));

@@ -20,7 +20,7 @@ public class ComparisonCommand extends AbstractCommand {
   @Override
   public void checkSyntax(IStream source) throws EmjInterExceptionBase {
     
-    if(!registers.containsKey(source.checkNext()))
+    if(!registers.containsKey(source.checkNext(0)))
     {
       throw new InvalidParamException(String.format("Unrecognized token at pos %s. Invalid register location", 
           source.getPosition() + 1));

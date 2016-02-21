@@ -13,3 +13,18 @@ an example program is this that calculates the factorial of the imputed number
 
 other example programs can be found in the _antler-ve/test/_ folder including this one
 the full Syntax is found in _antler-ve/grammer/emlg.g4_
+
+##emjInter Version
+Similar take on the "altr-ver" but instead uses the Unicode images as commands:
+`👉😱😽`
+
+compile using: `javac *.java`
+
+Then programs can be run using: `java Program /path/to/source/file [OPTIONAL -I /path/to/vm/spec/file/]`
+
+Example of FizzBuzz:
+`👉😲😺🐑😺🐢👉🐢😾👉😂😿🖕😾😿😕😾
+↔️😼👈🌕😾😊😽😊😽💡👉😅😿💡🖕😾😿
+😕😾↔️😼👈🌖😾💡👉🐢😾💡👉😱😽🖕😾😽
+👉🐢😾😊😽👈🌖😽😊😾👈🐢😾🐶🗣🌒🌓
+🌔👌🚽🌒🌓🌔💩😹`
