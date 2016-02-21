@@ -13,13 +13,24 @@ REGISTER VALUES
 PRINT A VAR/REGISTER
 🗣  (VAR) 👌
 
+PRINT A VAR/REGISTER to "FILE"
+🚽 (VAR) 💩 "FILE-VAL"
+
+IF
+😕 (VAR) |COMP| {THEN}
+💡  { ELSE}
+💡
+
+
 👍
 
 ????
 👈 👉 🖕
 😇
-😕
+😕💡
 😂 😃
 😣😧 😮 😱
-💩  🐑🐢🚽 ❤️💔
+🐑🐢 ❤️💔
+
+➡️⬅️⬆️⬇️↗️↘️↙️↖️
 

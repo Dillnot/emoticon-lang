@@ -1,5 +1,7 @@
 package e.emjinter.vm;
 
+import java.io.*;
+
 import e.emjinter.source.*;
 import e.emjinter.exception.*;
 import e.emjinter.vm.operations.*;
@@ -18,6 +20,8 @@ public class emjVM {
     registers = new RegisterStore();
     variables = new VariableStore();
     operations = new OperationStore(registers, variables);
+    
+    checkDirs();
   }
   
   public void run()
@@ -44,6 +48,15 @@ public class emjVM {
   {
     System.out.println("Printing Reg Values");
     System.out.println(registers.print());
+  }
+  
+  private void checkDirs()
+  {
+    File outDir = new File("output");
+    if(!outDir.exists())
+    {
+      outDir.mkdir();
+    }
   }
 
   

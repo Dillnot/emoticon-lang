@@ -1,6 +1,5 @@
 package e.emjinter.vm.operations;
 
-import e.emjinter.CodeToEmojiConverter;
 import e.emjinter.Grammar;
 import e.emjinter.exception.EmjInterExceptionBase;
 import e.emjinter.exception.InvalidParamException;
@@ -8,8 +7,6 @@ import e.emjinter.source.SourceStream;
 import e.emjinter.vm.AbstractKVPStore;
 
 public class PrintCommand extends AbstractCommand {
-
-  private static int PRINT_END = Grammar.CMD_PRNT_END;
   
   public PrintCommand(AbstractKVPStore<Integer, Integer> refRegisters, AbstractKVPStore<Integer, Integer> refVariables)
   {

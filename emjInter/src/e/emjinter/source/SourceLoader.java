@@ -1,41 +1,23 @@
 package e.emjinter.source;
 
-import java.io.*;
+import java.nio.file.*;
+import java.io.IOException;
 
 import e.emjinter.exception.*;
 
 public class SourceLoader {
   
-  public static String Load(String filename) throws EmjInterExceptionBase
+  public static byte[] Load(String filename) throws EmjInterExceptionBase
   {
-    InputStream frs = null;
-    Reader fr = null;
-    BufferedReader br = null;
-    String sourceCode = "";
-    String line = "";
+    byte[] bytes;
     
     try
     {
-      frs = new FileInputStream(filename);
-      fr = new InputStreamReader(frs, "UTF-8");
-      br = new BufferedReader(fr);
-    }
-    catch (FileNotFoundException e) { throw new SourceNotFoundException(filename); }
-    catch (UnsupportedEncodingException e) { throw new SourceNotReadException(filename); }
-    
-    try
-    {
-      while((line = br.readLine()) != null)
-      {
-        if(line != "\n") { sourceCode += line; }
-      }
-      
-      br.close();
-      fr.close();
+      bytes = Files.readAllBytes(Paths.get(filename));
     }
     catch (IOException e) { throw new SourceNotReadException(filename); }
       
-    return sourceCode;
+    return bytes;
 
   }
 }

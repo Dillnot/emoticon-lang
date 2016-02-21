@@ -14,4 +14,8 @@ hs_err_pid*
 #Ignoring the Eclipse Directorys
 *.metadata/
 *.settings/
-*.recommenders/
+*.recommenders/* 
+*.output/*  
+ 
+*.bin/*
+*.out

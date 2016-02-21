@@ -1,5 +1,11 @@
 package e.emjinter.source;
 
+import java.nio.charset.*;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.stream.IntStream;
+
 import e.emjinter.exception.*;
 
 public class SourceStream {
@@ -7,37 +13,40 @@ public class SourceStream {
   private int pos;
   private int length;
   
-  public SourceStream(String source)
+  private Set<Integer> buggeredBytes = new HashSet<Integer>();
+  
+  public SourceStream(byte[] source)
   {
-    this.source = new int[source.getBytes().length / 4];
-    processBytes(source.getBytes());
+    String sourceText = new String(source, StandardCharsets.UTF_8);
+    IntStream sourceStream = sourceText.codePoints();
+    
+    //Random stuff that's new lines and line-breaks
+    buggeredBytes.add(10);
+    buggeredBytes.add(13);
+    buggeredBytes.add(32);
+    buggeredBytes.add(65039);
+      
+    this.source = new int[65535];
+    int i = 0;
+    Iterator<Integer> it = sourceStream.iterator();
+    while(it.hasNext())
+    {
+      int val = (int)it.next();
+      if(!buggeredBytes.contains(val))
+      {
+        this.source[i] = val;
+        i++;
+      }
+    }
     
     this.pos    = 0;
-    this.length  = this.source.length;
+    this.length  = i;
   }
   
   public int getPosition() { return pos; }
   public int getLength()   { return length; }
   
-  private void processBytes(byte[] bytes)
-  {
-    int bytePos = -1;
     
-    for(int i = 0; i < this.source.length; i++)
-    {
-      int val = 0;
-      
-      for(int j = 0; j < 4; j++)
-      {
-        bytePos++;
-        val |= bytes[bytePos];
-        val = val << 8;
-      } 
-      source[i] = val;
-    }
-  }
-  
-  
   public int next()
   {
     return source[pos++];
@@ -55,7 +64,7 @@ public class SourceStream {
   
   public static SourceStream FromFile(String filename) throws EmjInterExceptionBase
   {
-    String contents = SourceLoader.Load(filename);
+    byte[] contents = SourceLoader.Load(filename);
     return new SourceStream(contents);
   }
 }
