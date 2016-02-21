@@ -15,7 +15,7 @@ public class emlgrun {
 			checkAndExec(source);
 
 		} catch (emlgException x) {
-			System.out.println("Contextual analysis failed");
+			System.out.println("A file MUST be  suppiled run using java emlgrun FILEPATH");
 		} catch (Exception x) {
 			x.printStackTrace(System.out);
 		}
