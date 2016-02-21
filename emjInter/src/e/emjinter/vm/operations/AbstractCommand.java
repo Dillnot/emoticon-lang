@@ -9,6 +9,7 @@ public abstract class AbstractCommand implements ICommand {
   protected int emojiCode;
   protected int numSymbols;
   
+  protected IVM vm;
   protected AbstractKVPStore<Integer, Integer> registers;
   protected AbstractKVPStore<Integer, Integer> variables;
   
@@ -16,6 +17,7 @@ public abstract class AbstractCommand implements ICommand {
   {
     registers = vm.getRegisters();
     variables = vm.getVariables();
+    this.vm = vm;
   }
   
   public abstract void checkSyntax(IStream source) throws EmjInterExceptionBase;
