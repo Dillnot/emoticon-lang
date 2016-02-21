@@ -7,20 +7,20 @@ import e.emjinter.exception.*;
 
 public class ComparisonCommand extends AbstractCommand {
 
-  public ComparisonCommand(AbstractKVPStore<Integer, Integer> refRegisters, AbstractKVPStore<Integer, Integer> refVariables)
+  public ComparisonCommand(IVM vm)
   {
-    super(refRegisters, refVariables);
+    super(vm);
     // TODO Auto-generated constructor stub
   }
 
   @Override
-  public void checkSyntax(SourceStream source) throws EmjInterExceptionBase {
+  public void checkSyntax(IStream source) throws EmjInterExceptionBase {
     // TODO Auto-generated method stub
 
   }
 
   @Override
-  public void execute(SourceStream source) throws EmjInterExceptionBase {
+  public void execute(IStream source) throws EmjInterExceptionBase {
     // TODO Auto-generated method stub
 
   }

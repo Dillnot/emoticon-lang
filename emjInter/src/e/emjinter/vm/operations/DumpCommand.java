@@ -20,16 +20,16 @@ public class DumpCommand extends AbstractCommand {
   private final String LINE_8 = "9.out";
   
   
-  public DumpCommand(AbstractKVPStore<Integer, Integer> refRegisters, AbstractKVPStore<Integer, Integer> refVariables)
+  public DumpCommand(IVM vm)
   {
-    super(refRegisters, refVariables);
+    super(vm);
 
     emojiCode = Grammar.CMD_DUMP_START;
     numSymbols = -1;
   }
 
   @Override
-  public void checkSyntax(SourceStream source) throws EmjInterExceptionBase {
+  public void checkSyntax(IStream source) throws EmjInterExceptionBase {
     int i = 0;
     for(i = 0; i < source.getLength(); i++)
     {
@@ -51,7 +51,7 @@ public class DumpCommand extends AbstractCommand {
   }
 
   @Override
-  public void execute(SourceStream source) throws EmjInterExceptionBase {
+  public void execute(IStream source) throws EmjInterExceptionBase {
     checkSyntax(source);
 
     String output = "";
