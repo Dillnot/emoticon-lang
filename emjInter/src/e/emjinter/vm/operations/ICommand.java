@@ -4,5 +4,5 @@ import e.emjinter.source.*;
 import e.emjinter.exception.*;
 
 public interface ICommand {
-  void execute(SourceStream source) throws EmjInterExceptionBase;
+  void execute(IStream source) throws EmjInterExceptionBase;
 }

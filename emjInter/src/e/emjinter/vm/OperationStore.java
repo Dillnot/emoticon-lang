@@ -6,11 +6,11 @@ import e.emjinter.vm.operations.*;
 
 public class OperationStore extends AbstractKVPStore<Integer, ICommand> {
 
-  public OperationStore(AbstractKVPStore<Integer, Integer> registers, AbstractKVPStore<Integer, Integer> vairables)
+  public OperationStore(IVM vm)
   {
     super();
     
-    addCommands(registers, vairables);
+    addCommands(vm);
   }
 
   @Override
@@ -27,12 +27,13 @@ public class OperationStore extends AbstractKVPStore<Integer, ICommand> {
     //This should never be called
   }
   
-  private void addCommands(AbstractKVPStore<Integer, Integer> refRegisters, AbstractKVPStore<Integer, Integer> refVariables)
+  private void addCommands(IVM vm)
   {
-    data.put(Grammar.CMD_ADD, new AddCommand(refRegisters, refVariables));
-    data.put(Grammar.CMD_SUB, new SubCommand(refRegisters, refVariables));
-    data.put(Grammar.CMD_PRNT_START, new PrintCommand(refRegisters, refVariables));
-    data.put(Grammar.CMD_DUMP_START, new DumpCommand(refRegisters, refVariables));
+    data.put(Grammar.CMD_ADD, new AddCommand(vm));
+    data.put(Grammar.CMD_SUB, new SubCommand(vm));
+    data.put(Grammar.CMD_PRNT_START, new PrintCommand(vm));
+    data.put(Grammar.CMD_DUMP_START, new DumpCommand(vm));
+    data.put(Grammar.CMD_COMP, new ComparisonCommand(vm));
   }
 
   

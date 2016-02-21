@@ -1,24 +1,24 @@
 package e.emjinter.vm.operations;
 
+import e.emjinter.vm.*;
 import e.emjinter.Grammar;
-import e.emjinter.exception.EmjInterExceptionBase;
-import e.emjinter.exception.InvalidParamException;
-import e.emjinter.source.SourceStream;
-import e.emjinter.vm.AbstractKVPStore;
+import e.emjinter.source.*;
+import e.emjinter.exception.*;
+
 
 public class PrintCommand extends AbstractCommand {
   
-  public PrintCommand(AbstractKVPStore<Integer, Integer> refRegisters, AbstractKVPStore<Integer, Integer> refVariables)
+  public PrintCommand(IVM vm)
   {
-    super(refRegisters, refVariables);
+    super(vm);
 
     emojiCode = Grammar.CMD_PRNT_START;
     numSymbols = -1;
   }
 
   @Override
-  public void checkSyntax(SourceStream source) throws EmjInterExceptionBase {
-    for(int i = 0; i < source.getLength(); i++)
+  public void checkSyntax(IStream source) throws EmjInterExceptionBase {
+    for(int i = 0; i < source.getLength() - source.getPosition(); i++)
     {
       int memLocation = source.checkNext(i);
       if(memLocation == Grammar.CMD_PRNT_END) { break; }
@@ -32,10 +32,10 @@ public class PrintCommand extends AbstractCommand {
   }
 
   @Override
-  public void execute(SourceStream source) throws EmjInterExceptionBase {
+  public void execute(IStream source) throws EmjInterExceptionBase {
     checkSyntax(source);
     
-    for(int i = 0; i < source.getLength(); i++)
+    for(int i = 0; i < source.getLength() - source.getPosition(); i++)
     {
       int memLocation = source.next();
       if(memLocation == Grammar.CMD_PRNT_END) { break ; }
