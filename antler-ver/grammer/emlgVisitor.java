@@ -45,6 +45,13 @@ public interface emlgVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPrint(emlgParser.PrintContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code printchar}
+	 * labeled alternative in {@link emlgParser#com}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPrintchar(emlgParser.PrintcharContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code read}
 	 * labeled alternative in {@link emlgParser#com}.
 	 * @param ctx the parse tree

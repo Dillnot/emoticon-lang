@@ -51,6 +51,13 @@ public class emlgBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements e
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitPrintchar(emlgParser.PrintcharContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitRead(emlgParser.ReadContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}

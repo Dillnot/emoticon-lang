@@ -3,6 +3,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 
+import org.antlr.v4.runtime.tree.TerminalNode;
+
+
+
 
 
 public class ExecVisitor extends emlgBaseVisitor<Integer> {
@@ -21,15 +25,26 @@ public class ExecVisitor extends emlgBaseVisitor<Integer> {
 		if (visit(ctx.expr()) == 1) {
 			visit(ctx.c1);
 		} else {
-			visit(ctx.c2);
+			if (ctx.c2 != null){
+				visit(ctx.c2);
+			}
+			
 		}
 		return null;
 	}
 
 	@Override
 	public Integer visitWhile(emlgParser.WhileContext ctx) {
-		while (visit(ctx.expr()) > 0) {
+		while (visit(ctx.expr()) != 0) {
 			visit(ctx.seq_com());
+		}
+		return null;
+	}
+	
+	@Override
+	public Integer visitSeq(emlgParser.SeqContext ctx) {
+		for(emlgParser.ComContext x :ctx.com()){
+			visit(x);
 		}
 		return null;
 	}
@@ -39,6 +54,15 @@ public class ExecVisitor extends emlgBaseVisitor<Integer> {
 		System.out.println(allVar.get(ctx.ID().getText().toString()));
 		return null;
 
+	}
+	
+	@Override
+	public Integer visitPrintchar(emlgParser.PrintcharContext ctx) {
+		for(TerminalNode x: ctx.ID()){
+			System.out.print((Character.toChars(allVar.get(x.getText()))));
+		}
+		System.out.println();
+		return null;
 	}
 
 	@Override
@@ -120,6 +144,10 @@ public class ExecVisitor extends emlgBaseVisitor<Integer> {
 		return allVar.get(ctx.getText().toString());
 	}
 	
+	@Override
+	public Integer visitParens(emlgParser.ParensContext ctx) {
+		return visit(ctx.expr());
+	}
 	public Integer visitNot(emlgParser.NotContext ctx){
 		int x = visit(ctx.prim_expr());
 		if (x == 0){

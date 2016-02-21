@@ -26,6 +26,7 @@ com
         |	WHILE expr LPAR
 		      seq_com RPAR                    # while
         | PRINT ID EOE                          #print
+        | PRINT CHAR ID+ EOE    #printchar
         | READ ID EOE #read
         ;
 
@@ -59,6 +60,7 @@ prim_expr
 
 //lexicon
 PRINT   : ':O';
+CHAR    : ':#';
 READ    : '|‑O';
 ASSN    : 'XD';
 //BOOL    : ':P';
@@ -88,4 +90,4 @@ fragment PARTOFID : ')' ;
 
 SPACE	:	(' ' | '\t')+   -> skip ;
 EOL	:	'\r'? '\n'          -> skip ;
-COMMENT : ('a'..'z' | 'A'..'Z') -> skip; 
+COMMENT : ('a'..'z' | 'A'..'Z') -> skip;

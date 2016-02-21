@@ -2,6 +2,8 @@
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 import org.objectweb.asm.*;
 
+
+
 public class compVisitor extends AbstractParseTreeVisitor<Void> implements emlgVisitor<Void>, Opcodes {
 
 	ClassWriter classWriter = new ClassWriter(ClassWriter.COMPUTE_MAXS | ClassWriter.COMPUTE_FRAMES);
@@ -125,4 +127,12 @@ public class compVisitor extends AbstractParseTreeVisitor<Void> implements emlgV
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Void visitPrintchar(emlgParser.PrintcharContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 }

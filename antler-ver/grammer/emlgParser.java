@@ -16,9 +16,9 @@ public class emlgParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		PRINT=1, READ=2, ASSN=3, LPAR=4, RPAR=5, IF=6, ELSE=7, WHILE=8, EOE=9, 
-		EQ=10, LT=11, GT=12, PLUS=13, MINUS=14, TIMES=15, DIV=16, FALSE=17, TRUE=18, 
-		NOT=19, NUM=20, ID=21, SPACE=22, EOL=23, COMMENT=24;
+		PRINT=1, CHAR=2, READ=3, ASSN=4, LPAR=5, RPAR=6, IF=7, ELSE=8, WHILE=9, 
+		EOE=10, EQ=11, LT=12, GT=13, PLUS=14, MINUS=15, TIMES=16, DIV=17, FALSE=18, 
+		TRUE=19, NOT=20, NUM=21, ID=22, SPACE=23, EOL=24, COMMENT=25;
 	public static final int
 		RULE_program = 0, RULE_com = 1, RULE_seq_com = 2, RULE_expr = 3, RULE_sec_expr = 4, 
 		RULE_prim_expr = 5;
@@ -27,12 +27,12 @@ public class emlgParser extends Parser {
 	};
 
 	private static final String[] _LITERAL_NAMES = {
-		null, "':O'", "'|‑O'", "'XD'", "'<3'", "'</3'", "'O_o'", "'o_O'", "'><>'", 
-		"':$'", "':@'", "':<'", "':>'", "':3'", "'<:|'", "':D'", "'D:'", "'}:)'", 
-		"'O:)'", "':&'"
+		null, "':O'", "':#'", "'|‑O'", "'XD'", "'<3'", "'</3'", "'O_o'", "'o_O'", 
+		"'><>'", "':$'", "':@'", "':<'", "':>'", "':3'", "'<:|'", "':D'", "'D:'", 
+		"'}:)'", "'O:)'", "':&'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
-		null, "PRINT", "READ", "ASSN", "LPAR", "RPAR", "IF", "ELSE", "WHILE", 
+		null, "PRINT", "CHAR", "READ", "ASSN", "LPAR", "RPAR", "IF", "ELSE", "WHILE", 
 		"EOE", "EQ", "LT", "GT", "PLUS", "MINUS", "TIMES", "DIV", "FALSE", "TRUE", 
 		"NOT", "NUM", "ID", "SPACE", "EOL", "COMMENT"
 	};
@@ -184,6 +184,21 @@ public class emlgParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
+	public static class PrintcharContext extends ComContext {
+		public TerminalNode PRINT() { return getToken(emlgParser.PRINT, 0); }
+		public TerminalNode CHAR() { return getToken(emlgParser.CHAR, 0); }
+		public TerminalNode EOE() { return getToken(emlgParser.EOE, 0); }
+		public List<TerminalNode> ID() { return getTokens(emlgParser.ID); }
+		public TerminalNode ID(int i) {
+			return getToken(emlgParser.ID, i);
+		}
+		public PrintcharContext(ComContext ctx) { copyFrom(ctx); }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof emlgVisitor ) return ((emlgVisitor<? extends T>)visitor).visitPrintchar(this);
+			else return visitor.visitChildren(this);
+		}
+	}
 	public static class ReadContext extends ComContext {
 		public TerminalNode READ() { return getToken(emlgParser.READ, 0); }
 		public TerminalNode ID() { return getToken(emlgParser.ID, 0); }
@@ -227,10 +242,11 @@ public class emlgParser extends Parser {
 	public final ComContext com() throws RecognitionException {
 		ComContext _localctx = new ComContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_com);
+		int _la;
 		try {
-			setState(44);
-			switch (_input.LA(1)) {
-			case ID:
+			setState(52);
+			switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
+			case 1:
 				_localctx = new AssnContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
@@ -244,7 +260,7 @@ public class emlgParser extends Parser {
 				match(EOE);
 				}
 				break;
-			case IF:
+			case 2:
 				_localctx = new IfContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
@@ -281,7 +297,7 @@ public class emlgParser extends Parser {
 				}
 				}
 				break;
-			case WHILE:
+			case 3:
 				_localctx = new WhileContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
@@ -297,7 +313,7 @@ public class emlgParser extends Parser {
 				match(RPAR);
 				}
 				break;
-			case PRINT:
+			case 4:
 				_localctx = new PrintContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
@@ -309,20 +325,44 @@ public class emlgParser extends Parser {
 				match(EOE);
 				}
 				break;
-			case READ:
-				_localctx = new ReadContext(_localctx);
+			case 5:
+				_localctx = new PrintcharContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
 				setState(41);
-				match(READ);
+				match(PRINT);
 				setState(42);
-				match(ID);
-				setState(43);
+				match(CHAR);
+				setState(44); 
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				do {
+					{
+					{
+					setState(43);
+					match(ID);
+					}
+					}
+					setState(46); 
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				} while ( _la==ID );
+				setState(48);
 				match(EOE);
 				}
 				break;
-			default:
-				throw new NoViableAltException(this);
+			case 6:
+				_localctx = new ReadContext(_localctx);
+				enterOuterAlt(_localctx, 6);
+				{
+				setState(49);
+				match(READ);
+				setState(50);
+				match(ID);
+				setState(51);
+				match(EOE);
+				}
+				break;
 			}
 		}
 		catch (RecognitionException re) {
@@ -370,17 +410,17 @@ public class emlgParser extends Parser {
 			_localctx = new SeqContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(49);
+			setState(57);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PRINT) | (1L << READ) | (1L << IF) | (1L << WHILE) | (1L << ID))) != 0)) {
 				{
 				{
-				setState(46);
+				setState(54);
 				com();
 				}
 				}
-				setState(51);
+				setState(59);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -437,15 +477,15 @@ public class emlgParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(52);
+			setState(60);
 			((ExprContext)_localctx).e1 = sec_expr();
-			setState(57);
+			setState(65);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << EQ) | (1L << LT) | (1L << GT))) != 0)) {
 				{
 				{
-				setState(53);
+				setState(61);
 				((ExprContext)_localctx).op = _input.LT(1);
 				_la = _input.LA(1);
 				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << EQ) | (1L << LT) | (1L << GT))) != 0)) ) {
@@ -453,11 +493,11 @@ public class emlgParser extends Parser {
 				} else {
 					consume();
 				}
-				setState(54);
+				setState(62);
 				((ExprContext)_localctx).e2 = sec_expr();
 				}
 				}
-				setState(59);
+				setState(67);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -506,13 +546,13 @@ public class emlgParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(60);
+			setState(68);
 			((Sec_exprContext)_localctx).e1 = prim_expr();
-			setState(63);
+			setState(71);
 			_la = _input.LA(1);
 			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PLUS) | (1L << MINUS) | (1L << TIMES) | (1L << DIV))) != 0)) {
 				{
-				setState(61);
+				setState(69);
 				((Sec_exprContext)_localctx).op = _input.LT(1);
 				_la = _input.LA(1);
 				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PLUS) | (1L << MINUS) | (1L << TIMES) | (1L << DIV))) != 0)) ) {
@@ -520,7 +560,7 @@ public class emlgParser extends Parser {
 				} else {
 					consume();
 				}
-				setState(62);
+				setState(70);
 				((Sec_exprContext)_localctx).e2 = sec_expr();
 				}
 			}
@@ -615,13 +655,13 @@ public class emlgParser extends Parser {
 		Prim_exprContext _localctx = new Prim_exprContext(_ctx, getState());
 		enterRule(_localctx, 10, RULE_prim_expr);
 		try {
-			setState(75);
+			setState(83);
 			switch (_input.LA(1)) {
 			case FALSE:
 				_localctx = new FalseContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(65);
+				setState(73);
 				match(FALSE);
 				}
 				break;
@@ -629,7 +669,7 @@ public class emlgParser extends Parser {
 				_localctx = new TrueContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(66);
+				setState(74);
 				match(TRUE);
 				}
 				break;
@@ -637,7 +677,7 @@ public class emlgParser extends Parser {
 				_localctx = new NumContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(67);
+				setState(75);
 				match(NUM);
 				}
 				break;
@@ -645,7 +685,7 @@ public class emlgParser extends Parser {
 				_localctx = new IdContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(68);
+				setState(76);
 				match(ID);
 				}
 				break;
@@ -653,9 +693,9 @@ public class emlgParser extends Parser {
 				_localctx = new NotContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(69);
+				setState(77);
 				match(NOT);
-				setState(70);
+				setState(78);
 				prim_expr();
 				}
 				break;
@@ -663,11 +703,11 @@ public class emlgParser extends Parser {
 				_localctx = new ParensContext(_localctx);
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(71);
+				setState(79);
 				match(LPAR);
-				setState(72);
+				setState(80);
 				expr();
-				setState(73);
+				setState(81);
 				match(RPAR);
 				}
 				break;
@@ -687,27 +727,29 @@ public class emlgParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\32P\4\2\t\2\4\3\t"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\33X\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\3\2\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3\3"+
 		"\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\5\3!\n\3\3\3\3\3\3\3\3\3\3\3\3\3"+
-		"\3\3\3\3\3\3\3\3\3\3\3\3\5\3/\n\3\3\4\7\4\62\n\4\f\4\16\4\65\13\4\3\5"+
-		"\3\5\3\5\7\5:\n\5\f\5\16\5=\13\5\3\6\3\6\3\6\5\6B\n\6\3\7\3\7\3\7\3\7"+
-		"\3\7\3\7\3\7\3\7\3\7\3\7\5\7N\n\7\3\7\2\2\b\2\4\6\b\n\f\2\4\3\2\f\16\3"+
-		"\2\17\22V\2\16\3\2\2\2\4.\3\2\2\2\6\63\3\2\2\2\b\66\3\2\2\2\n>\3\2\2\2"+
-		"\fM\3\2\2\2\16\17\5\6\4\2\17\20\7\2\2\3\20\3\3\2\2\2\21\22\7\27\2\2\22"+
-		"\23\7\5\2\2\23\24\5\b\5\2\24\25\7\13\2\2\25/\3\2\2\2\26\27\7\b\2\2\27"+
-		"\30\5\b\5\2\30\31\7\6\2\2\31 \5\6\4\2\32!\7\7\2\2\33\34\7\t\2\2\34\35"+
-		"\7\6\2\2\35\36\5\6\4\2\36\37\7\7\2\2\37!\3\2\2\2 \32\3\2\2\2 \33\3\2\2"+
-		"\2!/\3\2\2\2\"#\7\n\2\2#$\5\b\5\2$%\7\6\2\2%&\5\6\4\2&\'\7\7\2\2\'/\3"+
-		"\2\2\2()\7\3\2\2)*\7\27\2\2*/\7\13\2\2+,\7\4\2\2,-\7\27\2\2-/\7\13\2\2"+
-		".\21\3\2\2\2.\26\3\2\2\2.\"\3\2\2\2.(\3\2\2\2.+\3\2\2\2/\5\3\2\2\2\60"+
-		"\62\5\4\3\2\61\60\3\2\2\2\62\65\3\2\2\2\63\61\3\2\2\2\63\64\3\2\2\2\64"+
-		"\7\3\2\2\2\65\63\3\2\2\2\66;\5\n\6\2\678\t\2\2\28:\5\n\6\29\67\3\2\2\2"+
-		":=\3\2\2\2;9\3\2\2\2;<\3\2\2\2<\t\3\2\2\2=;\3\2\2\2>A\5\f\7\2?@\t\3\2"+
-		"\2@B\5\n\6\2A?\3\2\2\2AB\3\2\2\2B\13\3\2\2\2CN\7\23\2\2DN\7\24\2\2EN\7"+
-		"\26\2\2FN\7\27\2\2GH\7\25\2\2HN\5\f\7\2IJ\7\6\2\2JK\5\b\5\2KL\7\7\2\2"+
-		"LN\3\2\2\2MC\3\2\2\2MD\3\2\2\2ME\3\2\2\2MF\3\2\2\2MG\3\2\2\2MI\3\2\2\2"+
-		"N\r\3\2\2\2\b .\63;AM";
+		"\3\3\3\3\3\3\3\3\3\3\3\3\6\3/\n\3\r\3\16\3\60\3\3\3\3\3\3\3\3\5\3\67\n"+
+		"\3\3\4\7\4:\n\4\f\4\16\4=\13\4\3\5\3\5\3\5\7\5B\n\5\f\5\16\5E\13\5\3\6"+
+		"\3\6\3\6\5\6J\n\6\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7V\n\7\3\7"+
+		"\2\2\b\2\4\6\b\n\f\2\4\3\2\r\17\3\2\20\23`\2\16\3\2\2\2\4\66\3\2\2\2\6"+
+		";\3\2\2\2\b>\3\2\2\2\nF\3\2\2\2\fU\3\2\2\2\16\17\5\6\4\2\17\20\7\2\2\3"+
+		"\20\3\3\2\2\2\21\22\7\30\2\2\22\23\7\6\2\2\23\24\5\b\5\2\24\25\7\f\2\2"+
+		"\25\67\3\2\2\2\26\27\7\t\2\2\27\30\5\b\5\2\30\31\7\7\2\2\31 \5\6\4\2\32"+
+		"!\7\b\2\2\33\34\7\n\2\2\34\35\7\7\2\2\35\36\5\6\4\2\36\37\7\b\2\2\37!"+
+		"\3\2\2\2 \32\3\2\2\2 \33\3\2\2\2!\67\3\2\2\2\"#\7\13\2\2#$\5\b\5\2$%\7"+
+		"\7\2\2%&\5\6\4\2&\'\7\b\2\2\'\67\3\2\2\2()\7\3\2\2)*\7\30\2\2*\67\7\f"+
+		"\2\2+,\7\3\2\2,.\7\4\2\2-/\7\30\2\2.-\3\2\2\2/\60\3\2\2\2\60.\3\2\2\2"+
+		"\60\61\3\2\2\2\61\62\3\2\2\2\62\67\7\f\2\2\63\64\7\5\2\2\64\65\7\30\2"+
+		"\2\65\67\7\f\2\2\66\21\3\2\2\2\66\26\3\2\2\2\66\"\3\2\2\2\66(\3\2\2\2"+
+		"\66+\3\2\2\2\66\63\3\2\2\2\67\5\3\2\2\28:\5\4\3\298\3\2\2\2:=\3\2\2\2"+
+		";9\3\2\2\2;<\3\2\2\2<\7\3\2\2\2=;\3\2\2\2>C\5\n\6\2?@\t\2\2\2@B\5\n\6"+
+		"\2A?\3\2\2\2BE\3\2\2\2CA\3\2\2\2CD\3\2\2\2D\t\3\2\2\2EC\3\2\2\2FI\5\f"+
+		"\7\2GH\t\3\2\2HJ\5\n\6\2IG\3\2\2\2IJ\3\2\2\2J\13\3\2\2\2KV\7\24\2\2LV"+
+		"\7\25\2\2MV\7\27\2\2NV\7\30\2\2OP\7\26\2\2PV\5\f\7\2QR\7\7\2\2RS\5\b\5"+
+		"\2ST\7\b\2\2TV\3\2\2\2UK\3\2\2\2UL\3\2\2\2UM\3\2\2\2UN\3\2\2\2UO\3\2\2"+
+		"\2UQ\3\2\2\2V\r\3\2\2\2\t \60\66;CIU";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
