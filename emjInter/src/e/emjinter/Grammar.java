@@ -16,8 +16,8 @@ class Emoji {
   
   public static final int HEAD_SPEAK = 128483;
   
-  public static final int FINGER_LEFT = -30720;
-  public static final int FINGER_RIGHT = -28416;
+  public static final int FINGER_LEFT = 128072;
+  public static final int FINGER_RIGHT = 128073;
   public static final int FINGER_MIDDLE = -24832;
   public static final int FINGER_OK = 128076;
   public static final int FINGER_THUMBS = -29440;
@@ -62,6 +62,9 @@ public class Grammar
   
   public static final int CMD_COMP = Emoji.FACE_CONFUSED;
   public static final int CMD_COMP_END = Emoji.LIGHTBLUB;
+  
+  public static final int CMD_MEM_READ = Emoji.FINGER_RIGHT;
+  public static final int CMD_MEM_WRITE = Emoji.FINGER_LEFT;
   
   public static final int COMP_EQ = Emoji.ARROW_LEFT_RIGHT;
   public static final int COMP_LT = Emoji.ARROW_LEFT;
