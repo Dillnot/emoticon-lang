@@ -26,11 +26,11 @@ public class emlgrun {
 		emlgLexer lexer = new emlgLexer(new ANTLRInputStream(source));
 		CommonTokenStream tokens = new CommonTokenStream(lexer);
 		ParseTree tree = syntacticAnalyse(tokens);
-		//ExecVisitor exec = new ExecVisitor();
-		compVisitor exec = new compVisitor();
+		ExecVisitor exec = new ExecVisitor();
+		//compVisitor exec = new compVisitor();
 		System.out.println("executing...");
 		exec.visit(tree);
-		System.out.println(exec.getClassByteArray());
+		//System.out.println(exec.getClassByteArray());
 
 	}
 
