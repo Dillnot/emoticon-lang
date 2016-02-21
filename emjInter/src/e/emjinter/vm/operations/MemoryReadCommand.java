@@ -23,7 +23,7 @@ public class MemoryReadCommand extends AbstractCommand {
       throw new InvalidParamException(String.format("Unexpected symbol at pos %s. Expected memory location didn't find one.", source.getPosition() + 1));
     }
     
-    if(!registers.containsKey(source.checkNext()))
+    if(!registers.containsKey(source.checkNext(1)))
     {
       throw new InvalidParamException(String.format("Unexpected symbol at pos %s. Expected a register value but didn't find one.", source.getPosition() + 2));
     }

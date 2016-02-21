@@ -50,8 +50,8 @@ public class Program {
       }
 
       
-      //vm.run();
-      vm.debugShutdown();
+      vm.run();
+      //vm.debugShutdown();
     }
   }
 
