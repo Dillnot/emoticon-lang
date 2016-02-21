@@ -9,25 +9,25 @@
     :O :)) :$ print loop var
 
     :))) XD :)) :$ set thrid to second
-    ><> :))) :> 3 <3 thrid is grater than
-        :))) XD :))) <:| 3 :$ take away
+    ><> :))) :> 3 <3 thrid is greater than three
+        :))) XD :))) <:| 3 :$ take away three
     </3
 
     :)))) XD :)) :$ set fouth to second
-    ><> :)))) :> 7 <3 if fouth is greater than
-        :)))) XD :)))) <:| 7 :$ take away
+    ><> :)))) :> 7 <3 if fouth is greater  seven than
+        :)))) XD :)))) <:| 7 :$ take away seven
     </3
 
-    O_o :))) :@ 3 <3 if it is modiable by
+    O_o :))) :@ 3 <3 if it is modiable by three
         O_o :)))) :@ 7 <3 and
             :O :# :))))) :)))))) :))))))) :))))))) :)))))))) :))))))))) :))))))) :))))))) :$ print FizzBuzz
         o_O <3 else
             :O :# :))))) :)))))) :))))))) :))))))) :$ print Fizz
         </3
     o_O <3 else
-        O_o :)))) :@ 7 <3 if modiable by print Buzz
+        O_o :)))) :@ 7 <3 if modiable by seven print Buzz
             :O :# :)))))))) :))))))))) :))))))) :))))))) :$
         </3
     </3
-    :)) XD :)) <:| 1 :$ decument loop counter
+    :)) XD :)) <:| 1 :$ decument loop counter by one
 </3
