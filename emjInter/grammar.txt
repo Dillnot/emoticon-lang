@@ -21,6 +21,11 @@ IF
 💡  { ELSE}
 💡
 
+MEMORY READ
+👉 (MEM) (VAR)
+
+MEMORY WRITE
+👈 (MEM) (VAR)
 
 👍
 
