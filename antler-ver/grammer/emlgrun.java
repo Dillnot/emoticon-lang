@@ -12,7 +12,8 @@ public class emlgrun {
 			if (args.length == 0)
 				throw new emlgException();
 			InputStream source = new FileInputStream(args[0]);
-			check(source);
+			checkAndExec(source);
+
 		} catch (emlgException x) {
 			System.out.println("Contextual analysis failed");
 		} catch (Exception x) {
@@ -21,11 +22,15 @@ public class emlgrun {
 
 	}
 
-	private static void check(InputStream source) throws Exception {
+	private static void checkAndExec(InputStream source) throws Exception {
 		emlgLexer lexer = new emlgLexer(new ANTLRInputStream(source));
 		CommonTokenStream tokens = new CommonTokenStream(lexer);
 		ParseTree tree = syntacticAnalyse(tokens);
-		contextualAnalyse(tree, tokens);
+		//ExecVisitor exec = new ExecVisitor();
+		compVisitor exec = new compVisitor();
+		System.out.println("executing...");
+		exec.visit(tree);
+		System.out.println(exec.getClassByteArray());
 
 	}
 
@@ -40,11 +45,6 @@ public class emlgrun {
 		if (errors > 0)
 			throw new emlgException();
 		return tree;
-	}
-
-	private static void contextualAnalyse(ParseTree tree, CommonTokenStream tokens) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@SuppressWarnings("serial")

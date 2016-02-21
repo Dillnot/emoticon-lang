@@ -2,18 +2,18 @@
 grammar emlg;
 
 program
-        : var_decl* seq_com EOF # prog
+        : seq_com EOF # prog
         ;
-
 //Declarations
-var_decl
-    	:	type ID ASSN expr         # var
-    	;
 
-type
-    	:	BOOL                      # bool
-    	|	INT                       # int
-    	;
+//var_decl
+//    	:	type ID ASSN expr         # var
+//    	;
+
+//type
+//    	:	BOOL                      # bool
+//    	|	INT                       # int
+//    	;
 
 
 //comands
@@ -26,6 +26,7 @@ com
         |	WHILE expr LPAR
 		      seq_com RPAR                    # while
         | PRINT ID EOE                          #print
+        | READ ID EOE #read
         ;
 
 seq_com
@@ -58,9 +59,10 @@ prim_expr
 
 //lexicon
 PRINT   : ':O';
+READ    : '|‑O';
 ASSN    : 'XD';
-BOOL    : ':P';
-INT     : ':|';
+//BOOL    : ':P';
+//INT     : ':|';
 LPAR    : '<3';
 RPAR    : '</3';
 IF      : 'O_o';

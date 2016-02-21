@@ -17,27 +17,6 @@ public interface emlgVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitProg(emlgParser.ProgContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code var}
-	 * labeled alternative in {@link emlgParser#var_decl}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitVar(emlgParser.VarContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code bool}
-	 * labeled alternative in {@link emlgParser#type}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitBool(emlgParser.BoolContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code int}
-	 * labeled alternative in {@link emlgParser#type}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInt(emlgParser.IntContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code assn}
 	 * labeled alternative in {@link emlgParser#com}.
 	 * @param ctx the parse tree
@@ -65,6 +44,13 @@ public interface emlgVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitPrint(emlgParser.PrintContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code read}
+	 * labeled alternative in {@link emlgParser#com}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRead(emlgParser.ReadContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code seq}
 	 * labeled alternative in {@link emlgParser#seq_com}.
