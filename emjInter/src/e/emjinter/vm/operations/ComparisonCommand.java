@@ -2,7 +2,6 @@ package e.emjinter.vm.operations;
 
 import e.emjinter.vm.*;
 import e.emjinter.source.*;
-import e.emjinter.CodeToEmojiConverter;
 import e.emjinter.Grammar;
 import e.emjinter.exception.*;
 import e.emjinter.exception.RuntimeException;
@@ -64,7 +63,6 @@ public class ComparisonCommand extends AbstractCommand {
     int[] subSource = new int[65536];
     int i = 0;
     int cursor = 0;
-    int newPos = 0;
     
     while((cursor = source.next()) != Grammar.CMD_COMP_END)
     {
