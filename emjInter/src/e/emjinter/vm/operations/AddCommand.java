@@ -8,16 +8,16 @@ import e.emjinter.exception.*;
 
 public class AddCommand extends AbstractCommand {
 
-  public AddCommand(AbstractKVPStore<Integer, Integer> registers, AbstractKVPStore<Integer, Integer> variables)
+  public AddCommand(IVM vm)
   {
-    super(registers, variables);
+    super(vm);
     
     emojiCode = Grammar.CMD_ADD;
     numSymbols = 2;
   }
   
   @Override
-  public void checkSyntax(SourceStream source) throws EmjInterExceptionBase {
+  public void checkSyntax(IStream source) throws EmjInterExceptionBase {
     if(!registers.containsKey(source.checkNext()))
     {
       throw new InvalidParamException(String.format("Unexpected token at pos %s. Not a valid register value.",
@@ -26,7 +26,7 @@ public class AddCommand extends AbstractCommand {
   }
 
   @Override
-  public void execute(SourceStream source) throws EmjInterExceptionBase {
+  public void execute(IStream source) throws EmjInterExceptionBase {
     checkSyntax(source);
     
     int reg = source.next();

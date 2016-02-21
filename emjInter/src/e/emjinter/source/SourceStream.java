@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 
 import e.emjinter.exception.*;
 
-public class SourceStream {
+public class SourceStream implements IStream {
   private int[] source;
   private int pos;
   private int length;

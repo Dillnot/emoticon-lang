@@ -33,7 +33,7 @@ class Emoji {
   public static final int CAT_H = 128575;
   public static final int CAT_I = 128574;
   
-  
+  public static final int ARROW_RIGHT = 10145;
   public static final int ARROW_LEFT = 11013;
   public static final int ARROW_UP = 11014;
   public static final int ARROW_DOWN = 11015;
@@ -41,6 +41,8 @@ class Emoji {
   public static final int ARROW_DOWN_LEFT  = 8600;
   public static final int ARROW_DOWN_RIGHT = 8601;
   public static final int ARROW_UP_RIGHT =  8598;
+  public static final int ARROW_LEFT_RIGHT = 8596;
+  public static final int ARROW_UP_DOWN = 8597;
   // ???
   public static final int JOBBY = 128169;
   public static final int SHEEP = -28416;
@@ -57,6 +59,16 @@ public class Grammar
   //Arith Ops
   public static final int CMD_ADD = Emoji.FACE_SMILE;
   public static final int CMD_SUB = Emoji.FACE_SAD;
+  
+  public static final int CMD_COMP = Emoji.FACE_CONFUSED;
+  public static final int CMD_COMP_END = Emoji.LIGHTBLUB;
+  
+  public static final int COMP_EQ = Emoji.ARROW_LEFT_RIGHT;
+  public static final int COMP_LT = Emoji.ARROW_LEFT;
+  public static final int COMP_GT = Emoji.ARROW_RIGHT;
+  public static final int COMP_E_LT = Emoji.ARROW_DOWN_LEFT;
+  public static final int COMP_E_GT = Emoji.ARROW_UP_RIGHT;
+  public static final int COMP_NE = Emoji.ARROW_UP_DOWN;
   
   //Register values
   public static final int REG_0 = Emoji.CAT_A;
@@ -75,6 +87,18 @@ public class Grammar
   public static final int CMD_DUMP_START = Emoji.TOILET;
   public static final int CMD_DUMP_END   = Emoji.JOBBY;
   
+  
+  @SuppressWarnings("serial")
+  public static final Set<Integer> COMP_SET = new HashSet<Integer>()
+      {{
+        COMP_SET.add(COMP_EQ);
+        COMP_SET.add(COMP_LT);
+        COMP_SET.add(COMP_GT);
+        COMP_SET.add(COMP_E_LT);
+        COMP_SET.add(COMP_E_GT);
+        COMP_SET.add(COMP_NE);
+        
+      }};
   
   @SuppressWarnings("serial")
   public static final Set<Integer> REG_SET = new HashSet<Integer>()
