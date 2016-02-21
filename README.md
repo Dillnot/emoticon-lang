@@ -2,9 +2,9 @@
 a program language that uses only emoticons
 
 ## how to run the antlr-ver
-compile code using ` javac /antler-ver/grammer/*.java `
+compile code using ` javac antler-ver/grammer/emlgrun.java `
 
-Then programs can be run using `java emlgrun filepath`
+Then programs can be run using `java antler-ver/grammer/emlgrun filepath`
 
 where _filepath_ is the path to a file , it will first check that the syntax in the file is correct then execute the code
 
