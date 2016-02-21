@@ -45,13 +45,15 @@ class Emoji {
   public static final int ARROW_UP_DOWN = 8597;
   // ???
   public static final int JOBBY = 128169;
-  public static final int SHEEP = -28416;
+  public static final int SHEEP = 128017;
   public static final int TORTISE = -24064;
   public static final int TOILET =  128701; 
   public static final int LIGHTBLUB = 128161;
   
   public static final int HEART = -4252;
   public static final int HEART_BROKEN = -24832;
+  
+  public static final int DOG = 128054;
 }
 
 public class Grammar
@@ -72,6 +74,9 @@ public class Grammar
   public static final int COMP_E_LT = Emoji.ARROW_DOWN_LEFT;
   public static final int COMP_E_GT = Emoji.ARROW_UP_RIGHT;
   public static final int COMP_NE = Emoji.ARROW_UP_DOWN;
+  
+  public static final int WHILE_START = Emoji.SHEEP;
+  public static final int WHILE_END = Emoji.DOG;
   
   //Register values
   public static final int REG_0 = Emoji.CAT_A;

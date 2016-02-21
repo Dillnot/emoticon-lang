@@ -18,7 +18,7 @@ public class PrintCommand extends AbstractCommand {
 
   @Override
   public void checkSyntax(IStream source) throws EmjInterExceptionBase {
-    for(int i = 0; i < source.getLength() - source.getPosition(); i++)
+    for(int i = 0; i < source.getLength(); i++)
     {
       int memLocation = source.checkNext(i);
       if(memLocation == Grammar.CMD_PRNT_END) { break; }

@@ -39,6 +39,8 @@ public class OperationStore extends AbstractKVPStore<Integer, ICommand> {
     
     data.put(Grammar.CMD_MEM_READ, new MemoryReadCommand(vm));
     data.put(Grammar.CMD_MEM_WRITE, new MemoryWriteCommand(vm));
+    
+    data.put(Grammar.WHILE_START,  new WhileCommand(vm));
   }
 
   

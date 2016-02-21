@@ -69,6 +69,9 @@ public class emjVM implements IVM {
   {
     System.out.println("Printing Reg Values");
     System.out.println(registers.print());
+    
+    System.out.println("Memory Print");
+    System.out.println(variables.print());
   }
   
   private void checkDirs()

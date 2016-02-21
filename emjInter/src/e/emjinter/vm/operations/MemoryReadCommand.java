@@ -18,12 +18,12 @@ public class MemoryReadCommand extends AbstractCommand {
   @Override
   public void checkSyntax(IStream source) throws EmjInterExceptionBase {
     
-    if(!variables.containsKey(source.checkNext()))
+    if(!variables.containsKey(source.checkNext(0)))
     {
       throw new InvalidParamException(String.format("Unexpected symbol at pos %s. Expected memory location didn't find one.", source.getPosition() + 1));
     }
     
-    if(!registers.containsKey(source.checkNext(1)))
+    if(!registers.containsKey(source.checkNext()))
     {
       throw new InvalidParamException(String.format("Unexpected symbol at pos %s. Expected a register value but didn't find one.", source.getPosition() + 2));
     }
@@ -37,7 +37,7 @@ public class MemoryReadCommand extends AbstractCommand {
     int val = variables.getValue(source.next());
     int regLoc = source.next();
     
-    registers.addValue(regLoc, val);
+    registers.updateValue(regLoc, val);
   }
 
 }

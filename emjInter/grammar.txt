@@ -27,6 +27,9 @@ MEMORY READ
 MEMORY WRITE
 👈 (MEM) (VAR)
 
+WHILE LOOP
+🐑 (VAR) (TARGET) { DO } 🐶
+
 👍
 
 ????
@@ -36,7 +39,7 @@ MEMORY WRITE
 😂 😃
 😣😧 😮 😱
 🐑🐢 ❤️💔
-
+🐶
 ➡️⬅️↗️↙️
 ↕️↔️
 
