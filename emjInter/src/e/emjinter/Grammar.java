@@ -91,26 +91,25 @@ public class Grammar
   @SuppressWarnings("serial")
   public static final Set<Integer> COMP_SET = new HashSet<Integer>()
       {{
-        COMP_SET.add(COMP_EQ);
-        COMP_SET.add(COMP_LT);
-        COMP_SET.add(COMP_GT);
-        COMP_SET.add(COMP_E_LT);
-        COMP_SET.add(COMP_E_GT);
-        COMP_SET.add(COMP_NE);
-        
-      }};
+        add(COMP_EQ);
+        add(COMP_LT);
+        add(COMP_GT);
+        add(COMP_E_LT);
+        add(COMP_E_GT);
+        add(COMP_NE);
+     }};
   
   @SuppressWarnings("serial")
   public static final Set<Integer> REG_SET = new HashSet<Integer>()
       {{
-        REG_SET.add(REG_0);
-        REG_SET.add(REG_1);
-        REG_SET.add(REG_2);
-        REG_SET.add(REG_3);
-        REG_SET.add(REG_4);
-        REG_SET.add(REG_5);
-        REG_SET.add(REG_6);
-        REG_SET.add(REG_7);
-        REG_SET.add(REG_8);
+        add(REG_0);
+        add(REG_1);
+        add(REG_2);
+        add(REG_3);
+        add(REG_4);
+        add(REG_5);
+        add(REG_6);
+        add(REG_7);
+        add(REG_8);
       }};
 }

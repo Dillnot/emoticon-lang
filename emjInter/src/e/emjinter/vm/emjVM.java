@@ -38,7 +38,7 @@ public class emjVM implements IVM {
   { 
     //Stack frames :3
     stack.push(registers);
-    registers = new RegisterStore();
+    //registers = new RegisterStore();
     
     doRun(subStream);
     

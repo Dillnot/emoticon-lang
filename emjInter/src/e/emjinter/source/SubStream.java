@@ -9,7 +9,14 @@ public class SubStream implements IStream {
   {
     this.source = source;
     this.pos = 0;
-    this.length = this.source.length;
+    
+    int i = 0;
+    for(i = 0; i < source.length; i++)
+    {
+      if(source[i] == 0 ) { break; }
+    }
+    
+    this.length = i;
   }
   
   public int getPosition() { return pos; }

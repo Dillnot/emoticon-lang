@@ -64,10 +64,15 @@ public class ComparisonCommand extends AbstractCommand {
     int i = 0;
     int cursor = 0;
     
-    while((cursor = source.next()) != Grammar.CMD_COMP_END)
+    while(source.getPosition() < source.getLength())
     {
-      subSource[i] = cursor;
-      i++;
+      cursor = source.next();
+      if(cursor != Grammar.CMD_COMP_END)
+      {
+        subSource[i] = cursor;
+        i++;
+      }
+      else { break; }
     }
     
     //If true, we want to execute the first bit of the if
@@ -90,8 +95,18 @@ public class ComparisonCommand extends AbstractCommand {
     vm.executeSubStream(subStream);
   }
   
-  private boolean performComp(int comp, int a, int b)
+  private boolean performComp(int comp, int refA, int refB)
   {
+    int a = 0;
+    int b = 0;
+    
+    if(registers.containsKey(refA)) { a = registers.getValue(refA); }
+    else { a = variables.getValue(refA); }
+    
+    if(registers.containsKey(refB)) { b = registers.getValue(refB); }
+    else { b = variables.getValue(refA); }
+    
+    
     switch(comp)
     {
       case Grammar.COMP_EQ:   { return a == b; }
