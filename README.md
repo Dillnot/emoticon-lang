@@ -12,5 +12,4 @@ an example program is this that calculates the factorial of the imputed number
 `|‑O:):$:))XD:):$><>:):>1<3:)XD:)<:|1:$:))XD:)):D:):$</3:O:)):$`
 
 other example programs can be found in the _antler-ve/test/_ folder including this one
-
-they full Syntax is found in _antler-ve/grammer/emlg.g4_
+the full Syntax is found in _antler-ve/grammer/emlg.g4_
